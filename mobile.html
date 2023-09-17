@@ -39,3 +39,32 @@
     </script>
 </body>
 </html>
+
+<!-- ... (other HTML content) ... -->
+
+<script>
+    const ws = new WebSocket('ws://localhost:3000'); // WebSocket URL
+
+    // Function to send messages to the server
+    function sendMessage(message) {
+        if (ws.readyState === WebSocket.OPEN) {
+            ws.send(message);
+        }
+    }
+
+    // Handle WebSocket messages from the server
+    ws.onmessage = (event) => {
+        const data = JSON.parse(event.data);
+        document.getElementById('leftScore').innerText = data.leftScore;
+        document.getElementById('rightScore').innerText = data.rightScore;
+    };
+
+    // Add event listeners for the buttons
+    document.getElementById('incrementLeft').addEventListener('click', () => sendMessage('IncrementLeft'));
+    document.getElementById('decrementLeft').addEventListener('click', () => sendMessage('DecrementLeft'));
+    document.getElementById('incrementRight').addEventListener('click', () => sendMessage('IncrementRight'));
+    document.getElementById('decrementRight').addEventListener('click', () => sendMessage('DecrementRight'));
+    document.getElementById('reset').addEventListener('click', () => sendMessage('Reset'));
+</script>
+</body>
+</html>
