@@ -1,0 +1,39 @@
+/* Apply styles to the body and elements */
+body {
+    background-color: black;
+    color: white;
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
+
+/* Customize styles for your scoreboard elements */
+.scoreboard {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 100vh;
+}
+
+.score {
+    display: flex;
+    flex-direction: column;
+}
+
+.divider {
+    width: 4px;
+    height: 100px;
+    background-color: white;
+}
+
+button {
+    font-size: 24px;
+    padding: 10px 20px;
+    background-color: white;
+    color: black;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: gray;
+}
