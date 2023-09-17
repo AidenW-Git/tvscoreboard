@@ -19,7 +19,7 @@
         // Function to send action messages to the server
         function sendAction(action) {
             if (ws.readyState === WebSocket.OPEN) {
-                ws.send(action);
+                ws.send(JSON.stringify({ type: action }));
             }
         }
 

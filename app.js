@@ -26,7 +26,8 @@ wss.on('connection', (ws) => {
 
         // Process WebSocket messages here
         try {
-            switch (message) {
+            const action = JSON.parse(message);
+            switch (action.type) {
                 case 'IL':
                     leftScore++;
                     break;
@@ -44,13 +45,13 @@ wss.on('connection', (ws) => {
                     rightScore = 0;
                     break;
                 default:
-                    console.log('Unknown action:', message);
+                    console.log('Unknown action:', action);
                     break;
             }
 
             // Broadcast updated scores to all connected clients
             wss.clients.forEach((client) => {
-                if (client.readyState === WebSocket.OPEN) {
+                if (client !== ws && client.readyState === WebSocket.OPEN) {
                     client.send(JSON.stringify({ leftScore, rightScore }));
                 }
             });
