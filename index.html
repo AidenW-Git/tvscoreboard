@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <title>Scoreboard</title>
+</head>
+<body>
+    <div class="scoreboard">
+        <div class="score">
+            <button id="decrementLeft">- Left</button>
+            <span id="leftScore">0</span>
+            <button id="incrementLeft">+ Left</button>
+        </div>
+        <div class="divider"></div>
+        <div class="score">
+            <button id="decrementRight">- Right</button>
+            <span id="rightScore">0</span>
+            <button id="incrementRight">+ Right</button>
+        </div>
+        <button id="reset">Reset</button>
+    </div>
+
+    <div class="qr-code">
+        <!-- Add your QR code image here -->
+        <img src="your-qr-code-image.png" alt="QR Code" />
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
