@@ -1,30 +1,15 @@
-/* Apply styles to the body and elements */
+/* Common styles for both TV and mobile interfaces */
 body {
-    background-color: black;
-    color: white;
     font-family: Arial, sans-serif;
     text-align: center;
 }
 
-/* Customize styles for your scoreboard elements */
-.scoreboard {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    height: 100vh;
+/* Styles specific to the TV interface */
+.tv-score {
+    font-size: 48px; /* Increase font size for TV display */
 }
 
-.score {
-    display: flex;
-    flex-direction: column;
-}
-
-.divider {
-    width: 4px;
-    height: 100px;
-    background-color: white;
-}
-
+/* Styles for buttons on the mobile interface */
 button {
     font-size: 24px;
     padding: 10px 20px;
