@@ -5,14 +5,45 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="styles.css">
     <title>Mobile Remote</title>
+    <style>
+        body {
+            background-color: black;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .button-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+        }
+
+        button {
+            background-color: white;
+            color: black;
+            font-size: 1.5rem;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+        }
+
+        #reset {
+            grid-column: 2;
+        }
+    </style>
 </head>
 <body>
-    <button id="incrementLeft">+ Left</button>
-    <button id="decrementLeft">- Left</button>
-    <button id="incrementRight">+ Right</button>
-    <button id="decrementRight">- Right</button>
-    <button id="reset">Reset</button>
-
+    <div class="button-container">
+        <button id="incrementLeft">+ Left</button>
+        <button id="incrementRight">+ Right</button>
+        <button id="decrementLeft">- Left</button>
+        <button id="decrementRight">- Right</button>
+        <button id="reset">Reset</button>
+    </div>
     <script>
         const ws = new WebSocket('ws://localhost:3000'); // WebSocket URL
 
