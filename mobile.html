@@ -16,11 +16,10 @@
     <script>
         const ws = new WebSocket('ws://localhost:3000'); // WebSocket URL
 
-        // Function to send JSON messages to the server
-        function sendMessage(action) {
-            const message = JSON.stringify({ action });
+        // Function to send action messages to the server
+        function sendAction(action) {
             if (ws.readyState === WebSocket.OPEN) {
-                ws.send(message);
+                ws.send(action);
             }
         }
 
@@ -32,11 +31,11 @@
         };
 
         // Add event listeners for the buttons
-        document.getElementById('incrementLeft').addEventListener('click', () => sendMessage('IncrementLeft'));
-        document.getElementById('decrementLeft').addEventListener('click', () => sendMessage('DecrementLeft'));
-        document.getElementById('incrementRight').addEventListener('click', () => sendMessage('IncrementRight'));
-        document.getElementById('decrementRight').addEventListener('click', () => sendMessage('DecrementRight'));
-        document.getElementById('reset').addEventListener('click', () => sendMessage('Reset'));
+        document.getElementById('incrementLeft').addEventListener('click', () => sendAction('IncrementLeft'));
+        document.getElementById('decrementLeft').addEventListener('click', () => sendAction('DecrementLeft'));
+        document.getElementById('incrementRight').addEventListener('click', () => sendAction('IncrementRight'));
+        document.getElementById('decrementRight').addEventListener('click', () => sendAction('DecrementRight'));
+        document.getElementById('reset').addEventListener('click', () => sendAction('Reset'));
     </script>
 </body>
 </html>
