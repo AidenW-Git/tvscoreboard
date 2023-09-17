@@ -25,34 +25,38 @@ wss.on('connection', (ws) => {
         console.log(`Received message: ${message}`);
 
         // Process WebSocket messages here
-        switch (message) {
-            case 'IncrementLeft':
-                leftScore++;
-                break;
-            case 'DecrementLeft':
-                leftScore--;
-                break;
-            case 'IncrementRight':
-                rightScore++;
-                break;
-            case 'DecrementRight':
-                rightScore--;
-                break;
-            case 'Reset':
-                leftScore = 0;
-                rightScore = 0;
-                break;
-            default:
-                console.log('Unknown action:', message);
-                break;
-        }
-
-        // Broadcast updated scores to all connected clients
-        wss.clients.forEach((client) => {
-            if (client.readyState === WebSocket.OPEN) {
-                client.send(JSON.stringify({ leftScore, rightScore }));
+        try {
+            switch (message) {
+                case 'IncrementLeft':
+                    leftScore++;
+                    break;
+                case 'DecrementLeft':
+                    leftScore--;
+                    break;
+                case 'IncrementRight':
+                    rightScore++;
+                    break;
+                case 'DecrementRight':
+                    rightScore--;
+                    break;
+                case 'Reset':
+                    leftScore = 0;
+                    rightScore = 0;
+                    break;
+                default:
+                    console.log('Unknown action:', message);
+                    break;
             }
-        });
+
+            // Broadcast updated scores to all connected clients
+            wss.clients.forEach((client) => {
+                if (client.readyState === WebSocket.OPEN) {
+                    client.send(JSON.stringify({ leftScore, rightScore }));
+                }
+            });
+        } catch (error) {
+            console.error('Error processing message:', error);
+        }
     });
 });
 
