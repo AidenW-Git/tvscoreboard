@@ -27,19 +27,19 @@ wss.on('connection', (ws) => {
         // Process WebSocket messages here
         try {
             switch (message) {
-                case 'incrementLeft':
+                case 'IL':
                     leftScore++;
                     break;
-                case 'decrementLeft':
+                case 'DL':
                     leftScore--;
                     break;
-                case 'incrementRight':
+                case 'IR':
                     rightScore++;
                     break;
-                case 'decrementRight':
+                case 'DR':
                     rightScore--;
                     break;
-                case 'reset':
+                case 'R':
                     leftScore = 0;
                     rightScore = 0;
                     break;
